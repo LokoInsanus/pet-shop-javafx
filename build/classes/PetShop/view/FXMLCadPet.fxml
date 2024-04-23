@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PetShop.controller.FXMLCadPetController">
-    <children>
-        
-    </children>
+<AnchorPane id="AnchorPane" prefHeight="247.0" prefWidth="324.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PetShop.controller.FXMLCadPetController">
+   <children>
+      <TextField fx:id="fieldNome" layoutX="66.0" layoutY="34.0" />
+      <Label fx:id="lblNome" layoutX="23.0" layoutY="38.0" text="Nome" />
+      <TextField fx:id="fieldAnimal" layoutX="66.0" layoutY="58.0" />
+      <Label fx:id="lblAnimal" layoutX="23.0" layoutY="62.0" text="Animal" />
+      <Label fx:id="lblDonos" layoutX="23.0" layoutY="92.0" text="Donos" />
+      <TextField fx:id="fieldRaca" layoutX="66.0" layoutY="119.0" />
+      <Label fx:id="lblRaca" layoutX="23.0" layoutY="123.0" text="Raça" />
+      <TextField fx:id="fieldRGA" layoutX="66.0" layoutY="154.0" />
+      <Label fx:id="lblRGA" layoutX="23.0" layoutY="158.0" text="RGA" />
+      <Button fx:id="btnSalvar" layoutX="122.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleSalvar" text="Salvar" />
+      <ComboBox fx:id="comboDonos" layoutX="68.0" layoutY="88.0" prefWidth="150.0" />
+   </children>
 </AnchorPane>
