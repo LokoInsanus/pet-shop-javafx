@@ -1,7 +1,7 @@
 package PetShop.controller;
 
-import PetShop.model.Cliente;
-import PetShop.model.Pet;
+import PetShop.model.domain.Cliente;
+import PetShop.model.domain.Pet;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
