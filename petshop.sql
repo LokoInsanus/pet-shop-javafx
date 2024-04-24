@@ -1,5 +1,5 @@
-DROP TABLE cliente;
 DROP TABLE pet;
+DROP TABLE cliente;
 
 CREATE TABLE cliente (
     cdCliente INT PRIMARY KEY,
@@ -7,7 +7,7 @@ CREATE TABLE cliente (
     email VARCHAR(50) NOT NULL,
     rua VARCHAR(50) NOT NULL,
     bairro VARCHAR(50) NOT NULL,
-    numCasa INT NOT NULL,
+    numCasa VARCHAR(10) NOT NULL,
     telefone CHAR(12) NOT NULL,
     cpf  CHAR(14) NOT NULL
 );

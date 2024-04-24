@@ -22,16 +22,17 @@ public class ClienteDAO {
     }
 
     public boolean inserir(Cliente cliente) {
-        String sql = "INSERT INTO cliente(nome, email, rua, bairro, numCasa, telefone, cpf) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO cliente(CdCliente, nome, email, rua, bairro, numCasa, telefone, cpf) VALUES(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getEmail());
-            stmt.setString(3, cliente.getRua());
-            stmt.setString(4, cliente.getBairro());
-            stmt.setString(5, cliente.getNumeroCasa());
-            stmt.setString(6, cliente.getNumeroTelefone());
-            stmt.setString(7, cliente.getCpf());
+            stmt.setInt(1, cliente.getId());
+            stmt.setString(2, cliente.getNome());
+            stmt.setString(3, cliente.getEmail());
+            stmt.setString(4, cliente.getRua());
+            stmt.setString(5, cliente.getBairro());
+            stmt.setString(6, cliente.getNumeroCasa());
+            stmt.setString(7, cliente.getNumeroTelefone());
+            stmt.setString(8, cliente.getCpf());
             stmt.execute();
             return true;
         } catch (SQLException e) {
@@ -82,10 +83,10 @@ public class ClienteDAO {
                 Cliente cliente = new Cliente();
                 cliente.setId(resultado.getInt("cdCliente"));
                 cliente.setNome(resultado.getString("nome"));
-                cliente.setNome(resultado.getString("email"));
-                cliente.setNome(resultado.getString("rua"));
-                cliente.setNome(resultado.getString("bairro"));
-                cliente.setNome(resultado.getString("numCasa"));
+                cliente.setEmail(resultado.getString("email"));
+                cliente.setRua(resultado.getString("rua"));
+                cliente.setBairro(resultado.getString("bairro"));
+                cliente.setNumeroCasa(resultado.getString("numCasa"));
                 cliente.setNumeroTelefone(resultado.getString("telefone"));
                 cliente.setCpf(resultado.getString("cpf"));
                 list.add(cliente);

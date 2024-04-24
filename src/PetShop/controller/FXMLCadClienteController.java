@@ -1,5 +1,8 @@
 package PetShop.controller;
 
+import PetShop.model.dao.ClienteDAO;
+import PetShop.model.database.Database;
+import PetShop.model.database.DatabaseFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -7,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
 import PetShop.model.domain.Cliente;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,14 +37,21 @@ public class FXMLCadClienteController implements Initializable {
     @FXML
     private TextField fieldCPF;
     
+    private List<Cliente> listCliente;
+    
+    private final Database database = DatabaseFactory.getDatabase("jdbc");
+    private final Connection connection = database.conectar();
+    private final ClienteDAO clienteDAO = new ClienteDAO();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        clienteDAO.setConnection(connection);
     }
     
     @FXML
     public void handleSalvar() {
         Cliente cliente = new Cliente(
+            clienteDAO.listar().size() + 1,
             fieldNome.getText(),
             fieldEmail.getText(),
             fieldRua.getText(),
@@ -49,10 +60,7 @@ public class FXMLCadClienteController implements Initializable {
             fieldTelefone.getText(),
             fieldCPF.getText()
         );
-        List<Cliente> listCliente = new ArrayList<>();
-        listCliente.add(cliente);
-        
-        System.out.println(cliente);
+        clienteDAO.inserir(cliente);
     }
     
 }

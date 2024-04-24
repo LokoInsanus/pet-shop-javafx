@@ -12,11 +12,11 @@ public class DatabaseJDBC implements Database {
     @Override
     public Connection conectar() {
         try {
-            Class.forName("org.postgresql.Driver");
-            this.connection = DriverManager.getConnection("jdbc:jdbc://127.0.0.1/petshop", "root","123456");
+            //Class.forName("org.postgresql.Driver");
+            this.connection = DriverManager.getConnection("jdbc:derby://127.0.0.1/petshop", "root","123456");
             return this.connection;
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DatabaseJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (/*SQLException | ClassNotFoundException e*/ Exception e) {
+            Logger.getLogger(DatabaseJDBC.class.getName()).log(Level.SEVERE, null, e);
             return null;
         }
     }
@@ -25,8 +25,8 @@ public class DatabaseJDBC implements Database {
     public void desconectar(Connection connection) {
         try {
             connection.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DatabaseJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            Logger.getLogger(DatabaseJDBC.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 }
