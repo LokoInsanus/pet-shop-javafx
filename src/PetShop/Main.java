@@ -16,7 +16,9 @@ public class Main extends Application {
         
         stage.setScene(scene);
         stage.setTitle("Pet Shop");
-        //stage.setResizable(false);
+        stage.setResizable(false);
+        stage.setHeight(600);
+        stage.setWidth(1000);
         stage.show();
     }
 
