@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="267.0" prefWidth="324.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PetShop.controller.FXMLCadClienteController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="267.0" prefWidth="324.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PetShop.controller.FXMLCadClienteController">
    <children>
       <TextField fx:id="fieldNome" layoutX="66.0" layoutY="34.0" />
       <Label fx:id="lblNome" layoutX="23.0" layoutY="38.0" text="Nome" />
@@ -22,5 +22,6 @@
       <TextField fx:id="fieldCPF" layoutX="68.0" layoutY="200.0" />
       <Label fx:id="lblCPF" layoutX="25.0" layoutY="204.0" text="CPF" />
       <Button fx:id="btnSalvar" layoutX="125.0" layoutY="234.0" mnemonicParsing="false" onAction="#handleSalvar" text="Salvar" />
+      <Button fx:id="btnVoltar" layoutX="20.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
    </children>
 </AnchorPane>

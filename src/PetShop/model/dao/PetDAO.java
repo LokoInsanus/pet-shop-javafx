@@ -23,14 +23,15 @@ public class PetDAO {
     }
 
     public boolean inserir(Pet pet) {
-        String sql = "INSERT INTO pet(nome, animal, dono, raca, rga) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO pet(CdPet, nome, animal, dono, raca, rga) VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, pet.getNome());
-            stmt.setString(2, pet.getAnimal());
-            stmt.setString(3, pet.donoString());
-            stmt.setString(4, pet.getRaca());
-            stmt.setString(5, pet.getRga());
+            stmt.setInt(1, pet.getId());
+            stmt.setString(2, pet.getNome());
+            stmt.setString(3, pet.getAnimal());
+            stmt.setInt(4, pet.getDono().getId());
+            stmt.setString(5, pet.getRaca());
+            stmt.setString(6, pet.getRga());
             stmt.execute();
             return true;
         } catch (SQLException e) {
@@ -43,11 +44,12 @@ public class PetDAO {
         String sql = "UPDATE pet SET nome=?, animal=?, dono=?, raca=?, rga=? WHERE cdPet=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, pet.getNome());
-            stmt.setString(2, pet.getAnimal());
-            stmt.setString(3, pet.donoString());
-            stmt.setString(4, pet.getRaca());
-            stmt.setString(5, pet.getRga());
+            stmt.setInt(1, pet.getId());
+            stmt.setString(2, pet.getNome());
+            stmt.setString(3, pet.getAnimal());
+            stmt.setInt(4, pet.getDono().getId());
+            stmt.setString(5, pet.getRaca());
+            stmt.setString(6, pet.getRga());
             stmt.execute();
             return true;
         } catch (SQLException e) {
@@ -79,10 +81,10 @@ public class PetDAO {
                 Pet pet = new Pet();
                 pet.setId(resultado.getInt("cdPet"));
                 pet.setNome(resultado.getString("nome"));
-                pet.setNome(resultado.getString("animal"));
-                pet.setNome(resultado.getString("dono"));
-                pet.setNome(resultado.getString("raca"));
-                pet.setNome(resultado.getString("rga"));
+                pet.setAnimal(resultado.getString("animal"));
+                pet.setDono(new Cliente(resultado.getInt("dono"), "", "", "", "", "", "", ""));
+                pet.setRaca(resultado.getString("raca"));
+                pet.setRga(resultado.getString("rga"));
                 list.add(pet);
             }
         } catch (SQLException e) {

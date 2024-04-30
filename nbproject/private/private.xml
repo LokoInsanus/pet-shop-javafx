@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/PetShop/controller/FXMLMainController.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>7</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/NetBeansProjects/Pet%20Shop/src/PetShop/view/FXMLCadCliente.fxml</file>
-            <file>file:/D:/NetBeansProjects/Pet%20Shop/src/PetShop/model/Pet.java</file>
+            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLCadClienteController.java</file>
+            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLListClienteController.java</file>
+            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLCadPetController.java</file>
+            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLListPetController.java</file>
+            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLMainController.java</file>
+            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/view/FXMLListPet.fxml</file>
         </group>
     </open-files>
 </project-private>

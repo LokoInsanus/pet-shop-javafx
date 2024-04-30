@@ -12,10 +12,9 @@ public class DatabaseJDBC implements Database {
     @Override
     public Connection conectar() {
         try {
-            //Class.forName("org.postgresql.Driver");
             this.connection = DriverManager.getConnection("jdbc:derby://127.0.0.1/petshop", "root","123456");
             return this.connection;
-        } catch (/*SQLException | ClassNotFoundException e*/ Exception e) {
+        } catch (SQLException e) {
             Logger.getLogger(DatabaseJDBC.class.getName()).log(Level.SEVERE, null, e);
             return null;
         }

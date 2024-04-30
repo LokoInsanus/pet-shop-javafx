@@ -10,11 +10,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
 import PetShop.model.domain.Cliente;
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
 
 public class FXMLCadClienteController implements Initializable {
+    
+    @FXML
+    private AnchorPane anchorPane;
     
     @FXML
     private TextField fieldNome;
@@ -36,8 +43,6 @@ public class FXMLCadClienteController implements Initializable {
      
     @FXML
     private TextField fieldCPF;
-    
-    private List<Cliente> listCliente;
     
     private final Database database = DatabaseFactory.getDatabase("jdbc");
     private final Connection connection = database.conectar();
@@ -62,5 +67,10 @@ public class FXMLCadClienteController implements Initializable {
         );
         clienteDAO.inserir(cliente);
     }
-    
+
+    @FXML
+    public void handleVoltar() throws IOException {
+        AnchorPane anchor = FXMLLoader.load(getClass().getResource("/PetShop/view/FXMLMain.fxml"));
+        anchorPane.getChildren().setAll(anchor);
+    }
 }

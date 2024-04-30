@@ -76,8 +76,4 @@ public class Pet {
     public void setRga(String rga) {
         this.rga = rga;
     }
-    
-    public String donoString() {
-        return dono.getNome();
-    }
 }

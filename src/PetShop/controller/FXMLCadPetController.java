@@ -6,6 +6,7 @@ import PetShop.model.database.Database;
 import PetShop.model.database.DatabaseFactory;
 import PetShop.model.domain.Cliente;
 import PetShop.model.domain.Pet;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -14,11 +15,16 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class FXMLCadPetController implements Initializable {
+    
+    @FXML
+    private AnchorPane anchorPane;
     
     @FXML
     private TextField fieldNome;
@@ -36,7 +42,6 @@ public class FXMLCadPetController implements Initializable {
     private TextField fieldRGA;
     
     private List<Cliente> listCliente;
-    private List<Pet> listPet;
     private ObservableList<String> observableListCliente;
     
     private final Database database = DatabaseFactory.getDatabase("jdbc");
@@ -55,9 +60,9 @@ public class FXMLCadPetController implements Initializable {
     public void carregarComboCliente() {
         listCliente = clienteDAO.listar();
         observableListCliente = FXCollections.observableArrayList();
-        for(Cliente i : listCliente) {
+        listCliente.forEach((i) -> {
             observableListCliente.add(i.getNome());
-        }
+        });
         
         comboDonos.setItems(observableListCliente);
     }
@@ -65,15 +70,19 @@ public class FXMLCadPetController implements Initializable {
     @FXML
     public void handleSalvar() {
         Pet pet = new Pet(
+            petDAO.listar().size() + 1,
             fieldNome.getText(),
             fieldAnimal.getText(),
-            new Cliente(),
+            listCliente.get(comboDonos.getSelectionModel().getSelectedIndex()),
             fieldRaca.getText(),
             fieldRGA.getText()
         );
-        List<Pet> listPet = new ArrayList<>();
-        listPet.add(pet);
-        
-        System.out.println(pet.getNome());
+        petDAO.inserir(pet);
+    }
+    
+    @FXML
+    public void handleVoltar() throws IOException {
+        AnchorPane anchor = FXMLLoader.load(getClass().getResource("/PetShop/view/FXMLMain.fxml"));
+        anchorPane.getChildren().setAll(anchor);
     }
 }
