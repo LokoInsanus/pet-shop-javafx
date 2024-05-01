@@ -44,6 +44,9 @@ public class FXMLCadClienteController implements Initializable {
     @FXML
     private TextField fieldCPF;
     
+    private boolean editar;
+    private int idEditar;
+    
     private final Database database = DatabaseFactory.getDatabase("jdbc");
     private final Connection connection = database.conectar();
     private final ClienteDAO clienteDAO = new ClienteDAO();
@@ -51,6 +54,42 @@ public class FXMLCadClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         clienteDAO.setConnection(connection);
+    }
+    
+    public void setEditar(boolean editar) {
+        this.editar = editar;
+    }
+    
+    public void setIdEditar(int id) {
+        this.idEditar = id;
+    }
+    
+    public void setFieldNome(String nome) {
+        fieldNome.setText(nome);
+    }
+    
+    public void setFieldEmail(String email) {
+        fieldEmail.setText(email);
+    }
+    
+    public void setFieldRua(String rua) {
+        fieldRua.setText(rua);
+    }
+    
+    public void setFieldBairro(String bairro) {
+        fieldBairro.setText(bairro);
+    }
+    
+    public void setFieldCasa(String casa) {
+        fieldCasa.setText(casa);
+    }
+    
+    public void setFieldTelefone(String telefone) {
+        fieldTelefone.setText(telefone);
+    }
+    
+    public void setFieldCPF(String cpf) {
+        fieldCPF.setText(cpf);
     }
     
     @FXML
@@ -65,12 +104,35 @@ public class FXMLCadClienteController implements Initializable {
             fieldTelefone.getText(),
             fieldCPF.getText()
         );
-        clienteDAO.inserir(cliente);
+        if(editar) {
+            cliente.setId(idEditar);
+            clienteDAO.alterar(cliente);
+        } else {
+            clienteDAO.inserir(cliente);
+        }
+        try {
+            voltarTela();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
     @FXML
-    public void handleVoltar() throws IOException {
-        AnchorPane anchor = FXMLLoader.load(getClass().getResource("/PetShop/view/FXMLMain.fxml"));
+    public void handleVoltar() {
+        try {
+            voltarTela();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void voltarTela() throws IOException {
+        AnchorPane anchor;
+        if(editar) {
+            anchor = FXMLLoader.load(getClass().getResource("/PetShop/view/FXMLListCliente.fxml"));
+        } else {
+            anchor = FXMLLoader.load(getClass().getResource("/PetShop/view/FXMLMain.fxml"));
+        }
         anchorPane.getChildren().setAll(anchor);
     }
 }

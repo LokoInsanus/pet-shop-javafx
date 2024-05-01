@@ -42,7 +42,7 @@ public class ClienteDAO {
     }
 
     public boolean alterar(Cliente cliente) {
-        String sql = "UPDATE cliente SET nome=?, email=?, rua=?, bairro=?, numCasa=?, telefone=?, cpf=?, telefone=? WHERE cdCliente=?";
+        String sql = "UPDATE cliente SET nome=?, email=?, rua=?, bairro=?, numCasa=?, telefone=?, cpf=? WHERE cdCliente=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, cliente.getNome());
@@ -52,6 +52,7 @@ public class ClienteDAO {
             stmt.setString(5, cliente.getNumeroCasa());
             stmt.setString(6, cliente.getNumeroTelefone());
             stmt.setString(7, cliente.getCpf());
+            stmt.setInt(8, cliente.getId());
             stmt.execute();
             return true;
         } catch (SQLException e) {
@@ -114,7 +115,7 @@ public class ClienteDAO {
                 cliente.setCpf(resultado.getString("cpf"));
                 clienteAchado = cliente;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return clienteAchado;

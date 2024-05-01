@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="569.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PetShop.controller.FXMLListClienteController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="619.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PetShop.controller.FXMLListClienteController">
    <children>
       <Button fx:id="btnVoltar" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
       <TableView fx:id="tableClientes" layoutX="38.0" layoutY="51.0" prefHeight="478.0" prefWidth="882.0">
@@ -20,5 +21,8 @@
             <TableColumn fx:id="columnCpf" prefWidth="122.0" text="CPF" />
         </columns>
       </TableView>
+      <Label fx:id="labelCliente" layoutX="72.0" layoutY="540.0" text="Cliente" />
+      <Button fx:id="btnEditar" layoutX="38.0" layoutY="564.0" mnemonicParsing="false" onAction="#handleEditar" text="Editar" />
+      <Button fx:id="btnApagar" layoutX="99.0" layoutY="564.0" mnemonicParsing="false" onAction="#handleApagar" text="Apagar" />
    </children>
 </AnchorPane>

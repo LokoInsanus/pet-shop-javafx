@@ -44,6 +44,9 @@ public class FXMLCadPetController implements Initializable {
     private List<Cliente> listCliente;
     private ObservableList<String> observableListCliente;
     
+    private boolean editar;
+    private int idEditar;
+    
     private final Database database = DatabaseFactory.getDatabase("jdbc");
     private final Connection connection = database.conectar();
     private final ClienteDAO clienteDAO = new ClienteDAO();
@@ -55,6 +58,34 @@ public class FXMLCadPetController implements Initializable {
         petDAO.setConnection(connection);
         
         carregarComboCliente();
+    }
+    
+    public void setEditar(boolean editar) {
+        this.editar = editar;
+    }
+    
+    public void setIdEditar(int id) {
+        this.idEditar = id;
+    }
+    
+    public void setFieldNome(String nome) {
+        fieldNome.setText(nome);
+    }
+    
+    public void setFieldAnimal(String animal) {
+        fieldAnimal.setText(animal);
+    }
+    
+    public void setComboDono(int dono) {
+        comboDonos.setValue(observableListCliente.get(dono));
+    }
+    
+    public void setFieldRaca(String raca) {
+        fieldRaca.setText(raca);
+    }
+        
+    public void setFieldRGA(String rga) {
+        fieldRGA.setText(rga);
     }
     
     public void carregarComboCliente() {
@@ -77,12 +108,35 @@ public class FXMLCadPetController implements Initializable {
             fieldRaca.getText(),
             fieldRGA.getText()
         );
-        petDAO.inserir(pet);
+        if(editar) {
+            pet.setId(idEditar);
+            petDAO.alterar(pet);
+        } else {
+            petDAO.inserir(pet);
+        }
+        try {
+            voltarTela();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
     }
     
     @FXML
     public void handleVoltar() throws IOException {
-        AnchorPane anchor = FXMLLoader.load(getClass().getResource("/PetShop/view/FXMLMain.fxml"));
+        try {
+            voltarTela();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void voltarTela() throws IOException {
+        AnchorPane anchor;
+        if(editar) {
+            anchor = FXMLLoader.load(getClass().getResource("/PetShop/view/FXMLListPet.fxml"));
+        } else {
+            anchor = FXMLLoader.load(getClass().getResource("/PetShop/view/FXMLMain.fxml"));
+        }
         anchorPane.getChildren().setAll(anchor);
     }
 }

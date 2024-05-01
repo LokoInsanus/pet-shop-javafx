@@ -21,5 +21,3 @@ CREATE TABLE pet (
     rga VARCHAR(9) NOT NULL,
     FOREIGN KEY(dono) REFERENCES cliente(cdCliente)
 );
-
-select * from pet

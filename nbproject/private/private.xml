@@ -14,10 +14,8 @@
         <group>
             <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLCadClienteController.java</file>
             <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLListClienteController.java</file>
-            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLCadPetController.java</file>
             <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLListPetController.java</file>
-            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLMainController.java</file>
-            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/view/FXMLListPet.fxml</file>
+            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLCadPetController.java</file>
         </group>
     </open-files>
 </project-private>

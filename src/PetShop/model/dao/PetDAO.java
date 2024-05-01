@@ -12,6 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PetDAO {
+    private ClienteDAO clienteDAO = new ClienteDAO();
+    
     private Connection connection;
 
     public Connection getConnection() {
@@ -44,12 +46,12 @@ public class PetDAO {
         String sql = "UPDATE pet SET nome=?, animal=?, dono=?, raca=?, rga=? WHERE cdPet=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, pet.getId());
-            stmt.setString(2, pet.getNome());
-            stmt.setString(3, pet.getAnimal());
-            stmt.setInt(4, pet.getDono().getId());
-            stmt.setString(5, pet.getRaca());
-            stmt.setString(6, pet.getRga());
+            stmt.setString(1, pet.getNome());
+            stmt.setString(2, pet.getAnimal());
+            stmt.setInt(3, pet.getDono().getId());
+            stmt.setString(4, pet.getRaca());
+            stmt.setString(5, pet.getRga());
+            stmt.setInt(6, pet.getId());
             stmt.execute();
             return true;
         } catch (SQLException e) {
@@ -82,7 +84,8 @@ public class PetDAO {
                 pet.setId(resultado.getInt("cdPet"));
                 pet.setNome(resultado.getString("nome"));
                 pet.setAnimal(resultado.getString("animal"));
-                pet.setDono(new Cliente(resultado.getInt("dono"), "", "", "", "", "", "", ""));
+                //pet.setDono(new Cliente(resultado.getInt("dono"), "", "", "", "", "", "", ""));
+                pet.setDono(clienteDAO.buscar(new Cliente(resultado.getInt("dono"), "", "", "", "", "", "", "")));
                 pet.setRaca(resultado.getString("raca"));
                 pet.setRga(resultado.getString("rga"));
                 list.add(pet);
