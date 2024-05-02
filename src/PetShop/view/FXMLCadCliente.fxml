@@ -7,19 +7,19 @@
 
 <AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="267.0" prefWidth="324.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PetShop.controller.FXMLCadClienteController">
    <children>
-      <TextField fx:id="fieldNome" layoutX="66.0" layoutY="34.0" />
+      <TextField fx:id="fieldNome" layoutX="66.0" layoutY="34.0" onKeyReleased="#releasedNome" />
       <Label fx:id="lblNome" layoutX="23.0" layoutY="38.0" text="Nome" />
-      <TextField fx:id="fieldEmail" layoutX="66.0" layoutY="58.0" />
+      <TextField fx:id="fieldEmail" layoutX="66.0" layoutY="58.0" onKeyReleased="#releasedEmail" />
       <Label fx:id="lblEmail" layoutX="23.0" layoutY="62.0" text="Email" />
-      <TextField fx:id="fieldRua" layoutX="66.0" layoutY="88.0" />
+      <TextField fx:id="fieldRua" layoutX="66.0" layoutY="88.0" onKeyReleased="#releasedRua" />
       <Label fx:id="lblRua" layoutX="23.0" layoutY="92.0" text="Rua" />
-      <TextField fx:id="fieldBairro" layoutX="66.0" layoutY="119.0" />
+      <TextField fx:id="fieldBairro" layoutX="66.0" layoutY="119.0" onKeyReleased="#releasedBairro" />
       <Label fx:id="lblBairro" layoutX="23.0" layoutY="123.0" text="Bairro" />
-      <TextField fx:id="fieldCasa" layoutX="135.0" layoutY="143.0" prefHeight="24.0" prefWidth="40.0" />
+      <TextField fx:id="fieldCasa" layoutX="135.0" layoutY="143.0" onKeyReleased="#releasedCasa" prefHeight="24.0" prefWidth="40.0" />
       <Label fx:id="lblCasa" layoutX="23.0" layoutY="147.0" text="Numero da Casa" />
-      <TextField fx:id="fieldTelefone" layoutX="160.0" layoutY="167.0" prefHeight="24.0" prefWidth="145.0" />
+      <TextField fx:id="fieldTelefone" layoutX="160.0" layoutY="167.0" onKeyReleased="#releasedTelefone" prefHeight="24.0" prefWidth="145.0" />
       <Label fx:id="lblTelefone" layoutX="23.0" layoutY="171.0" text="Numero de Telefone" />
-      <TextField fx:id="fieldCPF" layoutX="68.0" layoutY="200.0" />
+      <TextField fx:id="fieldCPF" layoutX="68.0" layoutY="200.0" onKeyReleased="#releasedCPF" />
       <Label fx:id="lblCPF" layoutX="25.0" layoutY="204.0" text="CPF" />
       <Button fx:id="btnSalvar" layoutX="125.0" layoutY="234.0" mnemonicParsing="false" onAction="#handleSalvar" text="Salvar" />
       <Button fx:id="btnVoltar" layoutX="20.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />

@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -41,11 +42,20 @@ public class FXMLCadPetController implements Initializable {
     @FXML
     private TextField fieldRGA;
     
+    @FXML
+    private Button btnSalvar;
+    
     private List<Cliente> listCliente;
     private ObservableList<String> observableListCliente;
     
     private boolean editar;
     private int idEditar;
+    
+    private boolean boolNome = false;
+    private boolean boolAnimal = false;
+    private boolean boolDono = false;
+    private boolean boolRaca = false;
+    private boolean boolRGA = false;
     
     private final Database database = DatabaseFactory.getDatabase("jdbc");
     private final Connection connection = database.conectar();
@@ -58,6 +68,17 @@ public class FXMLCadPetController implements Initializable {
         petDAO.setConnection(connection);
         
         carregarComboCliente();
+        
+        btnSalvar.setDisable(true);
+        
+        comboDonos.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if(comboDonos.getValue() != null) {
+                boolDono = true;
+            }
+            if(boolNome && boolAnimal && boolDono && boolRaca && boolRGA) {
+                btnSalvar.setDisable(false);
+            }
+        });
     }
     
     public void setEditar(boolean editar) {
@@ -130,6 +151,50 @@ public class FXMLCadPetController implements Initializable {
         }
     }
 
+    @FXML
+    public void releasedNome() {
+        String nome = fieldNome.getText();
+        if(!nome.isEmpty() || !nome.trim().isEmpty()) {
+            boolNome = true;
+        }
+        if(boolNome && boolAnimal && boolDono && boolRaca && boolRGA) {
+            btnSalvar.setDisable(false);
+        }
+    }
+
+    @FXML
+    public void releasedAnimal() {
+        String animal = fieldAnimal.getText();
+        if(!animal.isEmpty() || !animal.trim().isEmpty()) {
+            boolAnimal = true;
+        }
+        if(boolNome && boolAnimal && boolDono && boolRaca && boolRGA) {
+            btnSalvar.setDisable(false);
+        }
+    }
+    
+    @FXML
+    public void releasedRaca() {
+        String raca = fieldRaca.getText();
+        if(!raca.isEmpty() || !raca.trim().isEmpty()) {
+            boolRaca = true;
+        }
+        if(boolNome && boolAnimal && boolDono && boolRaca && boolRGA) {
+            btnSalvar.setDisable(false);
+        }
+    }
+    
+    @FXML
+    public void releasedRGA() {
+        String rga = fieldRGA.getText();
+        if(!rga.isEmpty() || !rga.trim().isEmpty()) {
+            boolRGA = true;
+        }
+        if(boolNome && boolAnimal && boolDono && boolRaca && boolRGA) {
+            btnSalvar.setDisable(false);
+        }
+    }
+    
     public int acharId() {
         int tamanho = petDAO.listar().size();
         for(int i = 1; i <= tamanho; i++) {

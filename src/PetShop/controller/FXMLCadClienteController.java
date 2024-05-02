@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 public class FXMLCadClienteController implements Initializable {
@@ -44,8 +45,19 @@ public class FXMLCadClienteController implements Initializable {
     @FXML
     private TextField fieldCPF;
     
+    @FXML
+    private Button btnSalvar;
+    
     private boolean editar;
     private int idEditar;
+    
+    private boolean boolNome = false;
+    private boolean boolEmail = false;
+    private boolean boolRua = false;
+    private boolean boolBairro = false;
+    private boolean boolCasa = false;
+    private boolean boolTelefone = false;
+    private boolean boolCPF = false;
     
     private final Database database = DatabaseFactory.getDatabase("jdbc");
     private final Connection connection = database.conectar();
@@ -54,6 +66,8 @@ public class FXMLCadClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         clienteDAO.setConnection(connection);
+        
+        btnSalvar.setDisable(true);
     }
     
     public void setEditar(boolean editar) {
@@ -123,6 +137,83 @@ public class FXMLCadClienteController implements Initializable {
             voltarTela();
         } catch(Exception e) {
             System.out.println(e);
+        }
+    }
+    
+    @FXML
+    public void releasedNome() {
+        String nome = fieldNome.getText();
+        if(!nome.isEmpty() || !nome.trim().isEmpty()) {
+            boolNome = true;
+        }
+        if(boolNome && boolEmail && boolRua && boolBairro && boolCasa && boolTelefone && boolCPF) {
+            btnSalvar.setDisable(false);
+        }
+    }
+    
+    @FXML
+    public void releasedEmail() {
+        String email = fieldEmail.getText();
+        if(!email.isEmpty() || !email.trim().isEmpty()) {
+            boolEmail = true;
+        }
+        if(boolNome && boolEmail && boolRua && boolBairro && boolCasa && boolTelefone && boolCPF) {
+            btnSalvar.setDisable(false);
+        }
+    }
+    
+    @FXML
+    public void releasedRua() {
+        String rua = fieldRua.getText();
+        if(!rua.isEmpty() || !rua.trim().isEmpty()) {
+            boolRua = true;
+        }
+        if(boolNome && boolEmail && boolRua && boolBairro && boolCasa && boolTelefone && boolCPF) {
+            btnSalvar.setDisable(false);
+        }
+    }
+    
+    @FXML
+    public void releasedBairro() {
+        String bairro = fieldBairro.getText();
+        if(!bairro.isEmpty() || !bairro.trim().isEmpty()) {
+            boolBairro = true;
+        }
+        if(boolNome && boolEmail && boolRua && boolBairro && boolCasa && boolTelefone && boolCPF) {
+            btnSalvar.setDisable(false);
+        }
+    }
+    
+    @FXML
+    public void releasedCasa() {
+        String casa = fieldCasa.getText();
+        if(!casa.isEmpty() || !casa.trim().isEmpty()) {
+            boolCasa = true;
+        }
+        if(boolNome && boolEmail && boolRua && boolBairro && boolCasa && boolTelefone && boolCPF) {
+            btnSalvar.setDisable(false);
+        }
+    }
+    
+    @FXML
+    public void releasedTelefone() {
+        String telefone = fieldTelefone.getText();
+        if(!telefone.isEmpty() || !telefone.trim().isEmpty()) {
+            boolTelefone = true;
+        }
+        if(boolNome && boolEmail && boolRua && boolBairro && boolCasa && boolTelefone && boolCPF) {
+            btnSalvar.setDisable(false);
+        }
+    }
+    
+    @FXML
+    public void releasedCPF() {
+        String cpf = fieldCPF.getText();
+        if(!cpf.isEmpty() || !cpf.trim().isEmpty()) {
+            boolCPF = true;
+        }
+        if(boolNome && boolEmail && boolRua && boolBairro && boolCasa && boolTelefone && boolCPF) {
+            btnSalvar.setDisable(false);
         }
     }
     
