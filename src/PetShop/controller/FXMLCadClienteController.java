@@ -95,7 +95,7 @@ public class FXMLCadClienteController implements Initializable {
     @FXML
     public void handleSalvar() {
         Cliente cliente = new Cliente(
-            clienteDAO.listar().size() + 1,
+            acharId(),
             fieldNome.getText(),
             fieldEmail.getText(),
             fieldRua.getText(),
@@ -124,6 +124,16 @@ public class FXMLCadClienteController implements Initializable {
         } catch(Exception e) {
             System.out.println(e);
         }
+    }
+    
+    public int acharId() {
+        int tamanho = clienteDAO.listar().size();
+        for(int i = 1; i <= tamanho; i++) {
+            if(i != clienteDAO.listar().get(i - 1).getId()) {
+                return i;
+            }
+        }
+        return tamanho + 1;
     }
     
     public void voltarTela() throws IOException {
