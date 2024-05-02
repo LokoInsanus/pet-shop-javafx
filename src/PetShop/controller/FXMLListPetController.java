@@ -68,11 +68,9 @@ public class FXMLListPetController implements Initializable {
     private final Database database = DatabaseFactory.getDatabase("jdbc");
     private final Connection connection = database.conectar();
     private final PetDAO petDAO = new PetDAO();
-    private final ClienteDAO clienteDAO = new ClienteDAO();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        clienteDAO.setConnection(connection);
         petDAO.setConnection(connection);
         carregarTablePets();
         

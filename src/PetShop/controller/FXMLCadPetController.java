@@ -101,7 +101,7 @@ public class FXMLCadPetController implements Initializable {
     @FXML
     public void handleSalvar() {
         Pet pet = new Pet(
-            petDAO.listar().size() + 1,
+            acharId(),
             fieldNome.getText(),
             fieldAnimal.getText(),
             listCliente.get(comboDonos.getSelectionModel().getSelectedIndex()),
@@ -128,6 +128,16 @@ public class FXMLCadPetController implements Initializable {
         } catch(Exception e) {
             System.out.println(e);
         }
+    }
+
+    public int acharId() {
+        int tamanho = petDAO.listar().size();
+        for(int i = 1; i <= tamanho; i++) {
+            if(i != petDAO.listar().get(i - 1).getId()) {
+                return i;
+            }
+        }
+        return tamanho + 1;
     }
     
     public void voltarTela() throws IOException {

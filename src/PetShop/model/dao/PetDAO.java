@@ -37,7 +37,7 @@ public class PetDAO {
             stmt.execute();
             return true;
         } catch (SQLException e) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
     }
@@ -55,7 +55,7 @@ public class PetDAO {
             stmt.execute();
             return true;
         } catch (SQLException e) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
     }
@@ -68,14 +68,16 @@ public class PetDAO {
             stmt.execute();
             return true;
         } catch (SQLException e) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
     }
 
     public List<Pet> listar() {
-        String sql = "SELECT * FROM pet";
+        String sql = "SELECT * FROM pet ORDER BY(CdPet)";
+        clienteDAO.setConnection(connection);
         List<Pet> list = new ArrayList<>();
+        System.out.println(connection);
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
@@ -84,36 +86,35 @@ public class PetDAO {
                 pet.setId(resultado.getInt("cdPet"));
                 pet.setNome(resultado.getString("nome"));
                 pet.setAnimal(resultado.getString("animal"));
-                //pet.setDono(new Cliente(resultado.getInt("dono"), "", "", "", "", "", "", ""));
                 pet.setDono(clienteDAO.buscar(new Cliente(resultado.getInt("dono"), "", "", "", "", "", "", "")));
                 pet.setRaca(resultado.getString("raca"));
                 pet.setRga(resultado.getString("rga"));
                 list.add(pet);
             }
         } catch (SQLException e) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return list;
     }
 
     public Pet buscar(Pet pet) {
         String sql = "SELECT * FROM pet WHERE cdPet=?";
+        clienteDAO.setConnection(connection);
         Pet petAchado = new Pet();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, pet.getId());
             ResultSet resultado = stmt.executeQuery();
             if (resultado.next()) {
-                Cliente dono = new Cliente();
                 pet.setNome(resultado.getString("nome"));
                 pet.setAnimal(resultado.getString("animal"));
-                pet.setDono(dono);
+                pet.setDono(clienteDAO.buscar(new Cliente(resultado.getInt("dono"), "", "", "", "", "", "", "")));
                 pet.setRaca(resultado.getString("raca"));
                 pet.setRga(resultado.getString("rga"));
                 petAchado = pet;
             }
         } catch (SQLException e) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PetDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return petAchado;
     }

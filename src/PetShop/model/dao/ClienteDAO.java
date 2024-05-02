@@ -101,6 +101,7 @@ public class ClienteDAO {
     public Cliente buscar(Cliente cliente) {
         String sql = "SELECT * FROM cliente WHERE cdCliente=?";
         Cliente clienteAchado = new Cliente();
+        System.out.println(connection);
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, cliente.getId());
