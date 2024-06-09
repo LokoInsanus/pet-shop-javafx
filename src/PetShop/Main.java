@@ -14,13 +14,13 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        try {
-            OutputStream nullOutputStream = new FileOutputStream(new File(System.getProperty("os.name").startsWith("Windows") ? "NUL" : "/dev/null"));
-            System.setOut(new PrintStream(nullOutputStream));
-            System.setErr(new PrintStream(nullOutputStream));
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+//        try {
+//            OutputStream nullOutputStream = new FileOutputStream(new File(System.getProperty("os.name").startsWith("Windows") ? "NUL" : "/dev/null"));
+//            System.setOut(new PrintStream(nullOutputStream));
+//            System.setErr(new PrintStream(nullOutputStream));
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
         
         Parent root = FXMLLoader.load(getClass().getResource("view/FXMLMain.fxml"));
         Scene scene = new Scene(root);

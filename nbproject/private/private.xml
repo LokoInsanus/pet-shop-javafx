@@ -12,13 +12,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/Main.java</file>
             <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLCadClienteController.java</file>
-            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/model/dao/PetDAO.java</file>
-            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLListClienteController.java</file>
+            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLGrafPetClienteController.java</file>
             <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLListPetController.java</file>
-            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/controller/FXMLCadPetController.java</file>
-            <file>file:/D:/NetBeansProjects/pet-shop-javafx/src/PetShop/model/dao/ClienteDAO.java</file>
         </group>
     </open-files>
 </project-private>

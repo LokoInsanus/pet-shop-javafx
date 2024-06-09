@@ -40,5 +40,11 @@ public class FXMLMainController implements Initializable {
     private void handleListPet(ActionEvent event) throws IOException {
         AnchorPane anchor = FXMLLoader.load(getClass().getResource("/PetShop/view/FXMLListPet.fxml"));
         anchorPane.getChildren().setAll(anchor);
-    } 
+    }
+    
+    @FXML
+    private void handleGrafPetCliente(ActionEvent event) throws IOException {
+        AnchorPane anchor = FXMLLoader.load(getClass().getResource("/PetShop/view/FXMLGrafPetCliente.fxml"));
+        anchorPane.getChildren().setAll(anchor);
+    }
 }
